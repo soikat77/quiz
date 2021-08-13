@@ -22,7 +22,7 @@ class _MyAppState extends State<MyApp> {
 
   @override
   Widget build(BuildContext context) {
-    var questions = [
+    const questions = [
       {
         'questionText': 'What is your favorite color?',
         'answers': ['Black', 'Red', 'Pink', 'Blue'],
@@ -51,22 +51,25 @@ class _MyAppState extends State<MyApp> {
           title: Text('Material Design'),
           backgroundColor: Colors.purple,
         ),
-        body: Column(
-          children: <Widget>[
-            // Question will set here
-            Question(
-              questions[_questionIndex]['questionText'] as String,
-            ),
-            // Answer will set here
-            ...(questions[_questionIndex]['answers'] as List<String>)
-                .map((answer) {
-              return Answer(_answerQuestion, answer);
-            }).toList()
-            // Answer(_answerQuestion),
-            // Answer(_answerQuestion),
-            // Answer(_answerQuestion),
-            // Answer(_answerQuestion),
-          ],
+        body: Container(
+          margin: EdgeInsets.all(10),
+          child: Column(
+            children: <Widget>[
+              // Question will set here
+              Question(
+                questions[_questionIndex]['questionText'] as String,
+              ),
+              // Answer will set here
+              ...(questions[_questionIndex]['answers'] as List<String>)
+                  .map((answer) {
+                return Answer(_answerQuestion, answer);
+              }).toList()
+              // Answer(_answerQuestion),
+              // Answer(_answerQuestion),
+              // Answer(_answerQuestion),
+              // Answer(_answerQuestion),
+            ],
+          ),
         ),
       ),
     );
