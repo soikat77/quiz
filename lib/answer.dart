@@ -10,6 +10,11 @@ class Answer extends StatelessWidget {
       child: ElevatedButton(
         child: Text('Answer 1'),
         onPressed: selectHandler,
+        style: ElevatedButton.styleFrom(
+            primary: Colors.purple,
+            textStyle: TextStyle(
+              fontSize: 18,
+            )),
       ),
     );
   }
