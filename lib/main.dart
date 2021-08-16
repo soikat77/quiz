@@ -63,6 +63,13 @@ class _MyAppState extends State<MyApp> {
   var _questionIndex = 0;
   var _totalRank = 0;
 
+  void _resetIndex() {
+    setState(() {
+      _questionIndex = 0;
+      _totalRank = 0;
+    });
+  }
+
   void _answerQuestion(int rank) {
     _totalRank += rank;
     setState(() {
@@ -86,7 +93,7 @@ class _MyAppState extends State<MyApp> {
                 questionIndex: _questionIndex,
                 questions: _questions,
               )
-            : Result(_averageRank),
+            : Result(_averageRank, _resetIndex),
       ),
     );
   }
