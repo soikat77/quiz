@@ -15,29 +15,56 @@ class _MyAppState extends State<MyApp> {
   final _questions = const [
     {
       'questionText': 'What is your favorite color?',
-      'answers': ['Black', 'Red', 'Pink', 'Blue'],
+      'answers': [
+        {'opt': 'Black', 'rank': 1},
+        {'opt': 'Red', 'rank': 2},
+        {'opt': 'Pink', 'rank': 3},
+        {'opt': 'Blue', 'rank': 4},
+      ],
     },
     {
       'questionText': 'What is your favorite animal?',
-      'answers': ['Tiger', 'Cat', 'Lion', 'Dog'],
+      'answers': [
+        {'opt': 'Tiger', 'rank': 1},
+        {'opt': 'Cat', 'rank': 2},
+        {'opt': 'Lion', 'rank': 3},
+        {'opt': 'Dog', 'rank': 4},
+      ]
     },
     {
       'questionText': 'What is your favorite food?',
-      'answers': ['Rice', 'Milk', 'Meat', 'Vegetable'],
+      'answers': [
+        {'opt': 'Milk', 'rank': 1},
+        {'opt': 'Vegetable', 'rank': 2},
+        {'opt': 'Rice', 'rank': 3},
+        {'opt': 'Meat', 'rank': 4},
+      ],
     },
     {
       'questionText': 'What is your favorite city?',
-      'answers': ['Dhaka', 'New York', 'London', 'Dubai'],
+      'answers': [
+        {'opt': 'New York', 'rank': 1},
+        {'opt': 'Dhaka', 'rank': 2},
+        {'opt': 'London', 'rank': 3},
+        {'opt': 'Dubai', 'rank': 4},
+      ],
     },
     {
       'questionText': 'What is your favorite hero?',
-      'answers': ['Spiderman', 'Thor', 'Wonder Woman', 'Brucely'],
+      'answers': [
+        {'opt': 'Brucely', 'rank': 1},
+        {'opt': 'Spiderman', 'rank': 2},
+        {'opt': 'Thor', 'rank': 3},
+        {'opt': 'Wonder Woman', 'rank': 4},
+      ],
     },
   ];
 
   var _questionIndex = 0;
+  var _totalRank = 0;
 
-  void _answerQuestion() {
+  void _answerQuestion(int rank) {
+    _totalRank += rank;
     setState(() {
       _questionIndex += 1;
     });
@@ -46,6 +73,7 @@ class _MyAppState extends State<MyApp> {
 
   @override
   Widget build(BuildContext context) {
+    var _averageRank = _totalRank / _questions.length;
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
@@ -58,7 +86,7 @@ class _MyAppState extends State<MyApp> {
                 questionIndex: _questionIndex,
                 questions: _questions,
               )
-            : Result(),
+            : Result(_averageRank),
       ),
     );
   }
