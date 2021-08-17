@@ -36,7 +36,7 @@ class Result extends StatelessWidget {
               child: Text('Restart'),
               style: TextButton.styleFrom(
                 primary: Colors.white,
-                backgroundColor: Colors.teal,
+                backgroundColor: Colors.purple,
                 onSurface: Colors.grey,
               ),
             )
